@@ -24,10 +24,6 @@ object pepita {
     self.volar(distancia)
     ubicacion = nuevaUbicacion
   }
-
-  method puedoIrA(nuevaUbicacion) {
-    
-  }
 }
 
 object ruta9 {
