@@ -21,12 +21,8 @@ object pepita {
 
   method irA(nuevaUbicacion) {
     const distancia = ruta9.distanciaA(ubicacion, nuevaUbicacion)
-    if(joules >= self.energiaNecesariaPara(distancia)){
     self.volar(distancia)
     ubicacion = nuevaUbicacion
-    }else {
-      self.error("No cuentas con la eneregia necesaria")
-    }
   }
 
   method puedoIrA(nuevaUbicacion) {
