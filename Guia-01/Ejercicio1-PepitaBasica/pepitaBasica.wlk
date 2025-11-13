@@ -33,9 +33,9 @@ object ruta9 {
 }
 
 object zarate {
-  const kilometro = 86
+  const property kilometro = 86
 }
 
 object campana {
-  const kilometro = 70
+  const property kilometro = 70
 }
