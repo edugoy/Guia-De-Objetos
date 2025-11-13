@@ -28,7 +28,7 @@ object pepita {
 
 object ruta9 {
   method distanciaA(ubicacion,otraUbicacion) {
-    return (ubicacion.kilometro - otraUbicacion.kilometro)
+    return (ubicacion.kilometro() - otraUbicacion.kilometro())
   }
 }
 
