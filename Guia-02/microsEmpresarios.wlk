@@ -6,11 +6,11 @@ class Micro {
   var ocupadosParados = 0
 
   method lugaresSentadosLibres() {
-    return ocupadosSentados
+    return capacidadSentados - ocupadosSentados 
   }
 
   method lugaresParadosLibres() {
-    return ocupadosParados
+    return capacidadParados - ocupadosParados
   }
 
   method lugaresTotalesLibres() {
@@ -18,15 +18,15 @@ class Micro {
   }
 
   method hayLugar() {
-    self.lugaresLibres()
+    self.lugaresLibres() > 0
   }
 
   method hayLugarSentado() {
-    ocupadosSentados > 1
+    self.lugaresSentadosLibres() > 1
   }
 
   method lugaresLibres() {
-    self.lugaresTotalesLibres() - self.lugaresTotalesOcupados()
+    return  self.lugaresTotalesOcupados() - self.lugaresTotalesLibres()
   }
 
   method lugaresTotalesOcupados() {
