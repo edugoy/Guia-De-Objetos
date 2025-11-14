@@ -1,5 +1,6 @@
 object juliana {
   const celular = samsungS21
+  const compania = personal
 
   method cantidadDeBateria() {
     return celular.bateria()
@@ -10,7 +11,7 @@ object juliana {
   }
 
   method celularApagado() {
-    celular.apagado()
+    celular.celularApagado()
   }
 
   method cargarCelular() {
@@ -20,6 +21,7 @@ object juliana {
 
 object catalina {
   const celular = iphone13
+  const compania = movistar
 
   method cantidadDeBateria() {
     return celular.bateria()
@@ -30,7 +32,7 @@ object catalina {
   }
 
   method celularApagado() {
-    celular.apagado()
+    celular.celularApagado()
   }
 
   method cargarCelular() {
@@ -51,7 +53,7 @@ object samsungS21 {
     bateria = 5
   }
 
-  method apagado() {
+  method celularApagado() {
     bateria == 0
   }
 }
@@ -68,7 +70,43 @@ object iphone13 {
     bateria = 5
   }
 
-  method apagado() {
+  method celularApagado() {
     bateria == 0
+  }
+}
+
+object movistar {
+  const precioBase = 60
+
+  method cobroFijo() {
+    return precioBase
+  }
+
+  method montoLlamadoPorMinuto(minutos) {
+    self.cobroFijo() * minutos
+  }
+}
+
+object claro {
+  const precioBase = 50
+
+  method cobroFijo() {
+    return precioBase * 1.21
+  }
+
+  method montoLlamadoPorMinuto(minutos) {
+    self.cobroFijo() * minutos
+  }
+}
+
+object personal {
+  const precioBase = 70
+
+  method cobroFijo() {
+    return precioBase 
+  }
+
+  method montoLlamadoPorMinuto(minutos) {
+    self.cobroFijo() * minutos
   }
 }
