@@ -24,11 +24,40 @@ class Micro {
   method lugaresTotalesOcupados() {
     return ocupadosParados + ocupadosSentados
   }
+
   method puedeSubir(unaPersona) = self.hayLugar() && unaPersona.aceptaSubir(self)
 
   method subirA(unaPersona) {
-    if(self.puedeSubir(unaPersona)){
+    if(not(self.puedeSubir(unaPersona))){
+      self.error('no se puede subir a la persona')
+    }else{
+      self.ubicar()
+    }
+  }
+  
+  method ubicar() {
+    if(self.hayLugarSentado()){
+      ocupadosSentados += 1
+    }else{
+      ocupadosParados += 1
+    }
+  }
 
+  method puedeBajar(unaPersona) = self.lugaresTotalesOcupados() > 0
+
+  method bajarA(unaPersona) {
+    if(not(self.puedeBajar(unaPersona))){
+      self.error('No hay tal persona para bajar')
+    }else{
+      self.liberarLugar()
+    }
+  }
+
+  method liberarLugar() {
+    if(capacidadParados > 0){
+      ocupadosParados -= 1
+    }else{
+      ocupadosSentados -= 1
     }
   }
 }
