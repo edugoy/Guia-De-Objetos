@@ -1,15 +1,15 @@
 class Vaca {
-  var pesoVaca = 200000 //expresado en gr
+  var property peso = 200000 //expresado en gr
   var tieneSed = false
   var estaVacunada = true
 
   method comer(pesoComida) {
-    pesoVaca += pesoComida / 3
+    peso += pesoComida / 3
     tieneSed = true
   }
 
   method beber() {
-    pesoVaca -= 500
+    peso -= 500
     tieneSed = false
   }
 
@@ -22,20 +22,25 @@ class Vaca {
   }
 
   method tieneHambre() {
-    pesoVaca < 200000
+    peso < 200000
   }
 
   method salirACaminar() {
-    pesoVaca -= 3000
+    peso -= 3000
+  }
+
+  method verSiTieneSed() {
+    return tieneSed 
   }
 }
 
 class Cerdo {
-  var pesoCerdo = 20000
+  var peso = 20000
   var tieneHambre = false
   var comidaMayorPeso = 0
   var tieneSed = false
   var comeSinBeber = 0
+  var estaVacunada = true
 
   method comer(pesoComida) {
     self.verSiLeDaSed()
@@ -61,7 +66,7 @@ class Cerdo {
 
   method verSiAumentaPeso(pesoComida) {
     if(pesoComida > 200){
-        pesoCerdo += pesoComida - 200
+        peso += pesoComida - 200
     }
   }
   
@@ -79,5 +84,58 @@ class Cerdo {
     if(comeSinBeber > 3){
         tieneSed = true
     }
+  }
+
+  method convieneVacunar() {
+    return true
+  }
+
+  method tieneHambre() {
+    return tieneHambre
+  }
+
+  method verSiTieneSed() {
+    return tieneSed 
+  }
+
+  method vacunar() {
+    estaVacunada = true
+  }
+}
+
+class Gallina {
+  const peso = 4
+  var vecesQueComio = 0
+  var tieneSed = false
+  var estaVacunada = false
+
+  method comer(pesoComida) {
+    vecesQueComio += 1
+  }
+
+  method tieneHambre() {
+    return true
+  }
+
+  method verSiTieneSed() {
+    tieneSed = false
+  }
+
+  method convieneVacunar() {
+    return false
+  }
+
+  method verCuantasVecesComio() {
+    return vecesQueComio
+  }
+
+  method beber() {
+    if(!tieneSed){
+      tieneSed = false
+    }
+  }
+
+  method vacunar() {
+    estaVacunada = true
   }
 }
