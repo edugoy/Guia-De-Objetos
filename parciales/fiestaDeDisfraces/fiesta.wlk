@@ -11,6 +11,10 @@ class Fiesta {
     const invitado = invitados.anyOne()
     return invitado.miDisfraz().puntos(invitado, fechaDeFiesta)
   }
+
+  method mejorDisfraz() {
+    invitados.max({invitado => invitado.miDisfraz().puntos(invitado, fechaDeFiesta)})
+  }
 }
 
 class FiestInolvidable inherits Fiesta {
