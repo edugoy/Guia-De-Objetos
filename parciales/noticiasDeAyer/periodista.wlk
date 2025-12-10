@@ -1,4 +1,4 @@
-import Parciales.NoticiasDeAyer.noticia.*
+import parciales.noticiasDeAyer.noticia.*
 
 class Periodista {
   const property fechaIngreso
