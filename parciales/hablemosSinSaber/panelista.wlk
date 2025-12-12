@@ -1,47 +1,65 @@
 class Panelista {
-  var puntosEstrella
+  var property puntos = 0
 
-  method darRemateGracioso(tematica) {    
+  method puntosOpinionComun() = 1
+  method puntosOpinionDeportiva() = self.puntosOpinionComun()
+  method puntosOpinionFarandulera(unFarandulero) =  self.puntosOpinionComun()
+
+  method rematar(unaTematica) {
+    self.aumentarPuntos(self.puntosRemate(unaTematica))
+    self.postRemate()
   }
 
-  method opinarSobreTematica(tematica) {
-    puntosEstrella += 1
+  method aumentarPuntos(unosPuntos) {
+    puntos =+ unosPuntos
   }
+
+  method postRemate() {
+    
+  }
+
+  method opinar(unaTematica) {
+    self.aumentarPuntos(unaTematica.puntosPorOpinion(self))
+  }
+
+  method opinarConRemate(unaTematica) {
+    self.opinar(unaTematica)
+    self.rematar(unaTematica)
+  }
+
+  method puntosRemate(unaTematica)
 }
 
 class Celebridad inherits Panelista {
-  
-  override method darRemateGracioso(tematica) {
-    puntosEstrella += 3
-  }
+  override method puntosRemate(unaTematica) = 3
+
+  override method puntosOpinionFarandulera(unaTematica) =
+    if (unaTematica.estaInvolucrado(self)){
+        unaTematica.cantidadInvolucrados()
+    } else {
+        self.puntosOpinionComun()
+    }
 }
 
-class Colorado inherits Panelista{
-  var gracia
+class Colorado inherits Panelista {
+  var property gracia
 
+  override method puntosRemate(unaTematica) = gracia / 5
 
-  override method darRemateGracioso(tematica) {
-    puntosEstrella += (gracia / 5)
-    gracia += 1
+  override method postRemate() {
+    gracia =+ 1
   }
 }
 
 class ColoradoConPeluca inherits Colorado {
-
-  override method darRemateGracioso(tematica) {
-    super(tematica)
-    puntosEstrella += 1
-  }
+  override method puntosRemate(unaTematica) = super(unaTematica) + 1
 }
 
 class Viejo inherits Panelista {
-  
-  override method darRemateGracioso(tematica) {
-    const tituloTematica = tematica.split(" ")
-    puntosEstrella += tituloTematica.size()
-  }
+  override method puntosRemate(unaTematica) = unaTematica.cantidadPalabras()
 }
 
 class Deportivos inherits Panelista {
-  
+  override method puntosOpinionDeportiva() = 5
+  override method puntosRemate(unaTematica) = 0
 }
