@@ -22,4 +22,6 @@ class Triunvirato {
   method formaParte(unExiliado) {
     exiliados.contains(unExiliado)
   }
+
+  
 }

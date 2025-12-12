@@ -1,3 +1,5 @@
+import parciales.elLegadoDeSoliamMurr.solaimMurr.*
+
 class Asentamiento {
   var prosperidad
 
@@ -28,6 +30,10 @@ class Asentamiento {
 class Pueblos inherits Asentamiento {
   
   override method cantidadPlazas() = 1
+
+  method tieneMonumentoASoliamMurr() {
+    return false
+  }
 }
 
 class Ciudad inherits Asentamiento {
@@ -36,6 +42,34 @@ class Ciudad inherits Asentamiento {
   var monumentos = []
 
   method visitarMonumento(unExiliado, monumento) {
-    
+    unExiliado.visitarMonumento(self, monumento)
+  }
+
+  method tieneMonumentoASoliamMurr() {
+    return monumentos.any({monumento => soliamMurr.esReferenciadoPor(monumento)})
+  }
+
+  override method cantidadPlazas() {
+    return self.cantidadDePlazasComoAtracciones() + habitantes.div(10000)
+  }
+
+  method cantidadDePlazasComoAtracciones() {
+    return self.plazasComoAtracciones().size()
+  }
+
+  method plazasComoAtracciones() {
+    return atracciones.filter({atraccion => atraccion.contains("plaza")})
+  }
+
+  method incrementarHabitantes() {
+    habitantes += 1
+  }
+
+  method visitarMonumentoASoliamMurr(exiliado) {
+    exiliado.visitarMonumento(self, self.monumentoASoliamMurr())
+  }
+  
+  method monumentoASoliamMurr() {
+    return monumentos.find({monumento => soliamMurr.esReferenciadoPor(monumento)})
   }
 }
