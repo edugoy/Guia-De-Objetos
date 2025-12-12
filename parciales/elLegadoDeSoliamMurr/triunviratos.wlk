@@ -23,5 +23,15 @@ class Triunvirato {
     exiliados.contains(unExiliado)
   }
 
-  
+  method visitarAsentamiento(asentamiento) {
+    exiliados.forEach({exiliado => lider.congraciarse(exiliado, asentamiento, exiliados)})
+  }
+
+  method companieroCualquieraDe(exiliado) {
+    return self.exiliadosSin(exiliado).anyOne()
+  }
+
+  method exiliadosSin(exiliado) {
+    return exiliados.filter({miembro => miembro != exiliado})
+  }
 }

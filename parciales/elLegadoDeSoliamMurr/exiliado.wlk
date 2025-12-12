@@ -11,8 +11,8 @@ class Exiliado {
   }
 
   method visitarMonumento(unAsentamiento, unMonumento) {
-    
   }
+
 }
 
 class Nomada inherits Exiliado {
@@ -51,5 +51,12 @@ class Diablillo inherits Exiliado {
   
   method congraciarse(exilidado, asentamiento, triunvirato) {
     asentamiento.visitarTodasLasPLazar(exilidado)
+  }
+}
+
+class Sabueso inherits Exiliado {
+  
+  method congraciarse(exiliado, asentamiento, triunvirato) {
+    // no hace nada
   }
 }

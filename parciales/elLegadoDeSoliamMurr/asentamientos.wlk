@@ -25,6 +25,14 @@ class Asentamiento {
     self.aumentarPorsperidad((50 * horas))
     unExiliado.trabajar(self)
   }
+
+  method visitarTodasLasPlazas(unExiliado) {
+    self.cantidadPlazas().times{_ => self.pasearPorPlaza(unExiliado)}
+  }
+
+  method serVisitado(triunvirato) {
+    triunvirato.visitarAsentamiento(self)
+  }
 }
 
 class Pueblos inherits Asentamiento {
